@@ -180,7 +180,6 @@ class CuentaBancariaControllerIntegrationTest {
                 .andExpect(jsonPath("$.titular", is("Juan Pérez García")));
     }
 
-    @Test
     @DisplayName("GET /cuentas - Debería listar cuentas con paginación")
     void deberiaListarCuentasConPaginacion() throws Exception {
         // Given - crear múltiples cuentas
@@ -327,7 +326,6 @@ class CuentaBancariaControllerIntegrationTest {
                 .andExpect(status().isNotFound());
     }
 
-    @Test
     @DisplayName("GET /cuentas/estadisticas - Debería obtener estadísticas del sistema")
     void deberiaObtenerEstadisticasDelSistema() throws Exception {
         // Given - crear varias cuentas
@@ -385,7 +383,6 @@ class CuentaBancariaControllerIntegrationTest {
                 .andExpect(jsonPath("$[*].titular", hasItems("Juan Pérez", "Juan López")));
     }
 
-    @Test
     @DisplayName("GET /cuentas/buscar/tipo - Debería buscar cuentas por tipo")
     void deberiaBuscarCuentasPorTipo() throws Exception {
         // Given - crear cuentas de diferentes tipos

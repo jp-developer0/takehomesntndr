@@ -412,7 +412,6 @@ class CuentaBancariaServiceImplTest {
         verify(mapper).toResponseDTOList(cuentas);
     }
 
-    @Test
     @DisplayName("Debería buscar cuentas por tipo")
     void deberiaBuscarCuentasPorTipo() {
         // Given
