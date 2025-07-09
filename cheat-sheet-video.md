@@ -139,7 +139,7 @@ GET    /api/v1/cuentas/estadisticas                    # Estadísticas
 ```
 URL: jdbc:h2:mem:bankingdb
 User: sa
-Password: (vacío)
+Password: password
 ```
 
 ### **Consultas SQL**
