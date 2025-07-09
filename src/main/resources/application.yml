@@ -1,0 +1,83 @@
+spring:
+  application:
+    name: banking-microservice
+  
+  # H2 Database Configuration
+  datasource:
+    url: jdbc:h2:mem:bankingdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+    
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      
+  # JPA Configuration
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        
+  # Jackson Configuration
+  jackson:
+    default-property-inclusion: non_null
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: UTC
+
+# Server Configuration
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+# Actuator Configuration for Observability
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,loggers,env
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+      percentiles:
+        http.server.requests: 0.50, 0.95, 0.99
+        
+# Logging Configuration
+logging:
+  level:
+    com.santander.banking: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/banking-microservice.log
+
+# Custom Application Properties
+banking:
+  account:
+    max-balance: 1000000.00
+    min-balance: 0.00
+    default-currency: EUR
+  api:
+    self-call-timeout: 5000
+    retry-attempts: 3 

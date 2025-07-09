@@ -1,0 +1,8 @@
+Enunciado ejercicio práctico 1:
+Desarrollar un microservicio, arquitectura REST, que exponga un CRUD completo sobre entidades bancarias, es decir, el CRUD debe permitir Altas, bajas, modificaciones, y consultas. Los campos de la entidad son a libre a interpretación al igual que sus relaciones (puede tener o no).
+Asimismo, se espera que el microservicio exponga un nuevo End Point (dentro del mismo microservicio) que consuma el end point de consulta, es decir, que realice una llamada así mismo.
+Observaciones:
+        ◦ Se puede usar una base de datos en memoria (h2).
+        ◦ Se valora el diseño del microservicio: tipo de arquitectura, si aplica algún patrón de diseño, etc.
+        ◦ Se valoran aspectos tales como manejo de duplicidad en la creación/post y en el manejo de excepciones.
+        ◦ Se valora si el ejemplo incorpora algún test.
